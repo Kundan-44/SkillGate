@@ -1,0 +1,854 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Student / Teacher Login</title>
+
+    <link rel="stylesheet" href="../student/login.css">
+
+</head>
+
+<body>
+
+    <form action="" method="post" id="login">
+
+        <!-- =========================================
+             LOGIN SWITCH
+        ========================================== -->
+
+        <div class="login-switch">
+
+            <button
+                type="button"
+                id="studentBtn"
+                class="switch-btn active"
+                onclick="showStudentLogin()">
+
+                Student Login
+
+            </button>
+
+            <button
+                type="button"
+                id="teacherBtn"
+                class="switch-btn"
+                onclick="showTeacherLogin()">
+
+                Teacher Login
+
+            </button>
+
+        </div>
+
+
+        <!-- =========================================
+             STUDENT LOGIN
+        ========================================== -->
+
+        <div id="studentLogin">
+
+            <h1>STUDENT LOGIN</h1>
+
+
+            <label for="studentEmail">
+                Email
+            </label>
+
+            <input
+                type="email"
+                id="studentEmail"
+                name="studentEmail"
+                placeholder="example@gmail.com"
+                required
+            >
+
+
+            <label for="studentPassword">
+                Password
+            </label>
+
+            <input
+                type="password"
+                id="studentPassword"
+                name="studentPassword"
+                placeholder="Abcd@123"
+                required
+                pattern="(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[^A-Za-z0-9]).{8,}"
+                title="Password must contain uppercase, lowercase, number and special character"
+            >
+
+
+            <!-- FORGOT PASSWORD -->
+
+            <div class="forgot-box">
+
+                <a href="#" onclick="showForgotPassword('student')">
+                    Forgot Password?
+                </a>
+
+            </div>
+
+
+            <!-- LAB -->
+
+            <div class="lab-section">
+
+                <label for="lab">
+                    Choose Your Lab
+                </label>
+
+                <select
+                    name="lab"
+                    id="lab"
+                    required
+                >
+
+                    <option value="" disabled selected>
+                        -- Select Lab --
+                    </option>
+
+                    <option value="DSA">
+                        DSA
+                    </option>
+
+                    <option value="C">
+                        C
+                    </option>
+
+                    <option value="C++">
+                        C++
+                    </option>
+
+                    <option value="Python">
+                        Python
+                    </option>
+
+                    <option value="OOPs">
+                        OOPs (Java)
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <button
+                type="submit"
+                class="btn">
+
+                Student Login
+
+            </button>
+
+
+            <p>
+
+                Don't have a student account?
+
+                <a href="reg.html">
+                    Register
+                </a>
+
+            </p>
+
+        </div>
+
+
+        <!-- =========================================
+             TEACHER LOGIN
+        ========================================== -->
+
+        <div
+            id="teacherLogin"
+            class="hidden">
+
+            <h1>TEACHER LOGIN</h1>
+
+
+            <label for="teacherId">
+                Teacher ID
+            </label>
+
+            <input
+                type="text"
+                id="teacherId"
+                name="teacherId"
+                placeholder="Enter Teacher ID"
+            >
+
+
+            <label for="teacherPassword">
+                Password
+            </label>
+
+            <input
+                type="password"
+                id="teacherPassword"
+                name="teacherPassword"
+                placeholder="Enter your password"
+            >
+
+
+            <!-- FORGOT PASSWORD -->
+
+            <div class="forgot-box">
+
+                <a href="#" onclick="showForgotPassword('teacher')">
+                    Forgot Password?
+                </a>
+
+            </div>
+
+
+            <button
+                type="submit"
+                class="btn">
+
+                Teacher Login
+
+            </button>
+
+
+            <p>
+
+                Don't have a teacher account?
+
+                <a href="reg.html">
+                    Register
+                </a>
+
+            </p>
+
+        </div>
+
+
+        <!-- =========================================
+             FORGOT PASSWORD
+        ========================================== -->
+
+        <div
+            id="forgotPassword"
+            class="hidden">
+
+            <h1>RESET PASSWORD</h1>
+
+
+            <div class="reset-info">
+
+                <span id="resetUserIcon">🔐</span>
+
+                <p id="resetMessage">
+                    Reset your password
+                </p>
+
+            </div>
+
+
+            <!-- STUDENT RESET -->
+
+            <div id="studentReset">
+
+                <label for="resetStudentEmail">
+                    Student Email
+                </label>
+
+                <input
+                    type="email"
+                    id="resetStudentEmail"
+                    placeholder="example@gmail.com"
+                >
+
+            </div>
+
+
+            <!-- TEACHER RESET -->
+
+            <div
+                id="teacherReset"
+                class="hidden">
+
+                <label for="resetTeacherId">
+                    Teacher ID
+                </label>
+
+                <input
+                    type="text"
+                    id="resetTeacherId"
+                    placeholder="Enter Teacher ID"
+                >
+
+            </div>
+
+
+            <label for="newPassword">
+                New Password
+            </label>
+
+            <input
+                type="password"
+                id="newPassword"
+                placeholder="Abcd@123"
+                pattern="(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[^A-Za-z0-9]).{8,}"
+                title="Password must contain uppercase, lowercase, number and special character"
+            >
+
+
+            <label for="confirmNewPassword">
+                Confirm New Password
+            </label>
+
+            <input
+                type="password"
+                id="confirmNewPassword"
+                placeholder="Enter password again"
+            >
+
+
+            <button
+                type="button"
+                class="btn"
+                onclick="resetPassword()">
+
+                Reset Password
+
+            </button>
+
+
+            <button
+                type="button"
+                class="back-btn"
+                onclick="backToLogin()">
+
+                ← Back to Login
+
+            </button>
+
+        </div>
+
+    </form>
+
+
+    <script>
+
+        /* =========================================
+           GET ELEMENTS
+        ========================================== */
+
+        const form = document.getElementById("login");
+
+        const studentLogin =
+            document.getElementById("studentLogin");
+
+        const teacherLogin =
+            document.getElementById("teacherLogin");
+
+        const forgotPassword =
+            document.getElementById("forgotPassword");
+
+        const studentBtn =
+            document.getElementById("studentBtn");
+
+        const teacherBtn =
+            document.getElementById("teacherBtn");
+
+
+        /* STUDENT */
+
+        const studentEmail =
+            document.getElementById("studentEmail");
+
+        const studentPassword =
+            document.getElementById("studentPassword");
+
+        const lab =
+            document.getElementById("lab");
+
+
+        /* TEACHER */
+
+        const teacherId =
+            document.getElementById("teacherId");
+
+        const teacherPassword =
+            document.getElementById("teacherPassword");
+
+
+        /* RESET */
+
+        const studentReset =
+            document.getElementById("studentReset");
+
+        const teacherReset =
+            document.getElementById("teacherReset");
+
+        const resetStudentEmail =
+            document.getElementById("resetStudentEmail");
+
+        const resetTeacherId =
+            document.getElementById("resetTeacherId");
+
+        const newPassword =
+            document.getElementById("newPassword");
+
+        const confirmNewPassword =
+            document.getElementById("confirmNewPassword");
+
+        let resetType = "student";
+
+
+        /* =========================================
+           STUDENT LOGIN
+        ========================================== */
+
+        function showStudentLogin() {
+
+            studentLogin.classList.remove("hidden");
+
+            teacherLogin.classList.add("hidden");
+
+            forgotPassword.classList.add("hidden");
+
+            studentBtn.classList.add("active");
+
+            teacherBtn.classList.remove("active");
+
+            studentEmail.required = true;
+
+            studentPassword.required = true;
+
+            lab.required = true;
+
+            teacherId.required = false;
+
+            teacherPassword.required = false;
+
+        }
+
+
+        /* =========================================
+           TEACHER LOGIN
+        ========================================== */
+
+        function showTeacherLogin() {
+
+            studentLogin.classList.add("hidden");
+
+            teacherLogin.classList.remove("hidden");
+
+            forgotPassword.classList.add("hidden");
+
+            studentBtn.classList.remove("active");
+
+            teacherBtn.classList.add("active");
+
+            studentEmail.required = false;
+
+            studentPassword.required = false;
+
+            lab.required = false;
+
+            teacherId.required = true;
+
+            teacherPassword.required = true;
+
+        }
+
+
+        /* =========================================
+           FORGOT PASSWORD
+        ========================================== */
+
+        function showForgotPassword(type) {
+
+            event.preventDefault();
+
+            studentLogin.classList.add("hidden");
+
+            teacherLogin.classList.add("hidden");
+
+            forgotPassword.classList.remove("hidden");
+
+            studentBtn.classList.remove("active");
+
+            teacherBtn.classList.remove("active");
+
+            resetType = type;
+
+
+            if (type === "student") {
+
+                studentReset.classList.remove("hidden");
+
+                teacherReset.classList.add("hidden");
+
+                resetStudentEmail.required = true;
+
+                resetTeacherId.required = false;
+
+                document.getElementById("resetMessage").textContent =
+                    "Enter your student email to reset your password.";
+
+            }
+
+            else {
+
+                studentReset.classList.add("hidden");
+
+                teacherReset.classList.remove("hidden");
+
+                resetStudentEmail.required = false;
+
+                resetTeacherId.required = true;
+
+                document.getElementById("resetMessage").textContent =
+                    "Enter your Teacher ID to reset your password.";
+
+            }
+
+        }
+
+
+        /* =========================================
+           BACK TO LOGIN
+        ========================================== */
+
+        function backToLogin() {
+
+            forgotPassword.classList.add("hidden");
+
+            if (resetType === "student") {
+
+                showStudentLogin();
+
+            }
+
+            else {
+
+                showTeacherLogin();
+
+            }
+
+        }
+
+
+        /* =========================================
+           RESET PASSWORD
+        ========================================== */
+
+        function resetPassword() {
+
+            const password =
+                newPassword.value;
+
+            const confirmPassword =
+                confirmNewPassword.value;
+
+
+            if (password === "" || confirmPassword === "") {
+
+                alert("Please fill all password fields.");
+
+                return;
+
+            }
+
+
+            if (!newPassword.checkValidity()) {
+
+                alert(
+                    "Password must contain uppercase, lowercase, number, special character and minimum 8 characters."
+                );
+
+                return;
+
+            }
+
+
+            if (password !== confirmPassword) {
+
+                alert(
+                    "New Password and Confirm Password do not match."
+                );
+
+                return;
+
+            }
+
+
+            /* STUDENT */
+
+            if (resetType === "student") {
+
+                const email =
+                    resetStudentEmail.value.trim().toLowerCase();
+
+                const students =
+                    JSON.parse(
+                        localStorage.getItem("students") || "[]"
+                    );
+
+                const student =
+                    students.find(
+                        user => user.email === email
+                    );
+
+
+                if (!student) {
+
+                    alert(
+                        "Student account not found with this email."
+                    );
+
+                    return;
+
+                }
+
+
+                student.password = password;
+
+                localStorage.setItem(
+                    "students",
+                    JSON.stringify(students)
+                );
+
+
+                alert(
+                    "Student password reset successfully!"
+                );
+
+            }
+
+
+            /* TEACHER */
+
+            else {
+
+                const id =
+                    resetTeacherId.value.trim();
+
+                const teachers =
+                    JSON.parse(
+                        localStorage.getItem("teachers") || "[]"
+                    );
+
+                const teacher =
+                    teachers.find(
+                        user => user.teacherId === id
+                    );
+
+
+                if (!teacher) {
+
+                    alert(
+                        "Teacher account not found with this Teacher ID."
+                    );
+
+                    return;
+
+                }
+
+
+                teacher.password = password;
+
+                localStorage.setItem(
+                    "teachers",
+                    JSON.stringify(teachers)
+                );
+
+
+                alert(
+                    "Teacher password reset successfully!"
+                );
+
+            }
+
+
+            newPassword.value = "";
+
+            confirmNewPassword.value = "";
+
+            backToLogin();
+
+        }
+
+
+        /* =========================================
+           LOGIN
+        ========================================== */
+
+        form.addEventListener(
+            "submit",
+            function(event) {
+
+                event.preventDefault();
+
+
+                /* =========================
+                   STUDENT LOGIN
+                ========================== */
+
+                if (
+                    !studentLogin.classList.contains("hidden")
+                ) {
+
+                    const email =
+                        studentEmail.value.trim().toLowerCase();
+
+                    const password =
+                        studentPassword.value;
+
+
+                    if (lab.value === "") {
+
+                        alert(
+                            "Please select a lab."
+                        );
+
+                        return;
+
+                    }
+
+
+                    const students =
+                        JSON.parse(
+                            localStorage.getItem("students") || "[]"
+                        );
+
+
+                    const student =
+                        students.find(
+                            user =>
+                                user.email === email &&
+                                user.password === password
+                        );
+
+
+                    if (!student) {
+
+                        alert(
+                            "Invalid student email or password."
+                        );
+
+                        return;
+
+                    }
+
+
+                    localStorage.setItem(
+                        "selectedLab",
+                        lab.value
+                    );
+
+                    localStorage.setItem(
+                        "loggedInStudent",
+                        email
+                    );
+
+
+                    if (lab.value === "Python") {
+
+                        window.location.href =
+                            "python.html";
+
+                    }
+
+                    else if (lab.value === "C") {
+
+                        window.location.href =
+                            "c.html";
+
+                    }
+
+                    else if (lab.value === "C++") {
+
+                        window.location.href =
+                            "cpp.html";
+
+                    }
+
+                    else if (lab.value === "DSA") {
+
+                        window.location.href =
+                            "dsa.html";
+
+                    }
+
+                    else if (lab.value === "OOPs") {
+
+                        window.location.href =
+                            "oops.html";
+
+                    }
+
+                }
+
+
+                /* =========================
+                   TEACHER LOGIN
+                ========================== */
+
+                else if (
+                    !teacherLogin.classList.contains("hidden")
+                ) {
+
+                    const id =
+                        teacherId.value.trim();
+
+                    const password =
+                        teacherPassword.value;
+
+
+                    const teachers =
+                        JSON.parse(
+                            localStorage.getItem("teachers") || "[]"
+                        );
+
+
+                    const teacher =
+                        teachers.find(
+                            user =>
+                                user.teacherId === id &&
+                                user.password === password
+                        );
+
+
+                    if (!teacher) {
+
+                        alert(
+                            "Invalid Teacher ID or password."
+                        );
+
+                        return;
+
+                    }
+
+
+                    localStorage.setItem(
+                        "loggedInTeacher",
+                        id
+                    );
+
+
+                    alert(
+                        "Teacher Login Successful!"
+                    );
+
+
+                    window.location.href =
+                        "teacher-home.html";
+
+                }
+
+            }
+        );
+
+    </script>
+
+</body>
+
+</html>

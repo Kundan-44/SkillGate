@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>Student / Teacher Register</title>
+
+    <link rel="stylesheet" href="../student/reg.css">
+
+</head>
+
+
+<body>
+
+
+    <form
+        action=""
+        method="post"
+        id="register">
+
+
+        <!-- =========================================
+             REGISTER SWITCH
+        ========================================== -->
+
+        <div class="register-switch">
+
+
+            <button
+                type="button"
+                id="studentRegisterBtn"
+                class="switch-btn active"
+                onclick="showStudentRegister()">
+
+                Student Register
+
+            </button>
+
+
+            <button
+                type="button"
+                id="teacherRegisterBtn"
+                class="switch-btn"
+                onclick="showTeacherRegister()">
+
+                Teacher Register
+
+            </button>
+
+
+        </div>
+
+
+        <!-- =========================================
+             STUDENT REGISTER
+        ========================================== -->
+
+        <div id="studentRegister">
+
+
+            <h1>
+                STUDENT REGISTER
+            </h1>
+
+
+            <label for="studentName">
+                Full Name
+            </label>
+
+
+            <input
+                type="text"
+                id="studentName"
+                name="studentName"
+                placeholder="Enter your full name"
+                required
+            >
+
+
+            <label for="registrationNo">
+                Registration No.
+            </label>
+
+
+            <input
+                type="text"
+                id="registrationNo"
+                name="registrationNo"
+                placeholder="25153153***"
+                minlength="11"
+                maxlength="11"
+                pattern="[0-9]{11}"
+                title="Registration number must contain exactly 11 digits"
+                required
+            >
+
+
+            <label for="studentEmail">
+                Email
+            </label>
+
+
+            <input
+                type="email"
+                id="studentEmail"
+                name="studentEmail"
+                placeholder="example@gmail.com"
+                required
+            >
+
+
+            <label for="studentPassword">
+                Password
+            </label>
+
+
+            <input
+                type="password"
+                id="studentPassword"
+                name="studentPassword"
+                placeholder="Abcd@123"
+                pattern="(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[^A-Za-z0-9]).{8,}"
+                title="Password must contain uppercase, lowercase, number and special character"
+                required
+            >
+
+
+            <label for="studentConfirmPassword">
+                Confirm Password
+            </label>
+
+
+            <input
+                type="password"
+                id="studentConfirmPassword"
+                name="studentConfirmPassword"
+                placeholder="Enter password again"
+                required
+            >
+
+
+            <button
+                type="submit"
+                class="btn">
+
+                Student Register
+
+            </button>
+
+
+            <p>
+
+                Already have a student account?
+
+                <a href="login.html">
+                    Login
+                </a>
+
+            </p>
+
+
+        </div>
+
+
+        <!-- =========================================
+             TEACHER REGISTER
+        ========================================== -->
+
+        <div
+            id="teacherRegister"
+            class="hidden">
+
+
+            <h1>
+                TEACHER REGISTER
+            </h1>
+
+
+            <label for="teacherName">
+                Full Name
+            </label>
+
+
+            <input
+                type="text"
+                id="teacherName"
+                name="teacherName"
+                placeholder="Enter teacher name"
+            >
+
+
+            <label for="teacherId">
+                Teacher ID
+            </label>
+
+
+            <input
+                type="text"
+                id="teacherId"
+                name="teacherId"
+                placeholder="Enter Teacher ID"
+            >
+
+
+            <!-- TEACHER EMAIL REMOVED -->
+
+
+            <label for="teacherPassword">
+                Password
+            </label>
+
+
+            <input
+                type="password"
+                id="teacherPassword"
+                name="teacherPassword"
+                placeholder="Abcd@123"
+                pattern="(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[^A-Za-z0-9]).{8,}"
+                title="Password must contain uppercase, lowercase, number and special character"
+            >
+
+
+            <label for="teacherConfirmPassword">
+                Confirm Password
+            </label>
+
+
+            <input
+                type="password"
+                id="teacherConfirmPassword"
+                name="teacherConfirmPassword"
+                placeholder="Enter password again"
+            >
+
+
+            <button
+                type="submit"
+                class="btn">
+
+                Teacher Register
+
+            </button>
+
+
+            <p>
+
+                Already have a teacher account?
+
+                <a href="login.html">
+                    Login
+                </a>
+
+            </p>
+
+
+        </div>
+
+
+    </form>
+
+
+    <script>
+
+
+        /* =========================================
+           ELEMENTS
+        ========================================== */
+
+        const form =
+            document.getElementById("register");
+
+
+        const studentRegister =
+            document.getElementById("studentRegister");
+
+
+        const teacherRegister =
+            document.getElementById("teacherRegister");
+
+
+        const studentRegisterBtn =
+            document.getElementById("studentRegisterBtn");
+
+
+        const teacherRegisterBtn =
+            document.getElementById("teacherRegisterBtn");
+
+
+        /* =========================================
+           STUDENT INPUTS
+        ========================================== */
+
+        const studentName =
+            document.getElementById("studentName");
+
+
+        const registrationNo =
+            document.getElementById("registrationNo");
+
+
+        const studentEmail =
+            document.getElementById("studentEmail");
+
+
+        const studentPassword =
+            document.getElementById("studentPassword");
+
+
+        const studentConfirmPassword =
+            document.getElementById(
+                "studentConfirmPassword"
+            );
+
+
+        /* =========================================
+           TEACHER INPUTS
+        ========================================== */
+
+        const teacherName =
+            document.getElementById("teacherName");
+
+
+        const teacherId =
+            document.getElementById("teacherId");
+
+
+        const teacherPassword =
+            document.getElementById("teacherPassword");
+
+
+        const teacherConfirmPassword =
+            document.getElementById(
+                "teacherConfirmPassword"
+            );
+
+
+        /* =========================================
+           STUDENT REGISTER
+        ========================================== */
+
+        function showStudentRegister() {
+
+
+            studentRegister.classList.remove(
+                "hidden"
+            );
+
+
+            teacherRegister.classList.add(
+                "hidden"
+            );
+
+
+            studentRegisterBtn.classList.add(
+                "active"
+            );
+
+
+            teacherRegisterBtn.classList.remove(
+                "active"
+            );
+
+
+            /* REQUIRED */
+
+            studentName.required = true;
+
+            registrationNo.required = true;
+
+            studentEmail.required = true;
+
+            studentPassword.required = true;
+
+            studentConfirmPassword.required = true;
+
+
+            teacherName.required = false;
+
+            teacherId.required = false;
+
+            teacherPassword.required = false;
+
+            teacherConfirmPassword.required = false;
+
+        }
+
+
+        /* =========================================
+           TEACHER REGISTER
+        ========================================== */
+
+        function showTeacherRegister() {
+
+
+            studentRegister.classList.add(
+                "hidden"
+            );
+
+
+            teacherRegister.classList.remove(
+                "hidden"
+            );
+
+
+            studentRegisterBtn.classList.remove(
+                "active"
+            );
+
+
+            teacherRegisterBtn.classList.add(
+                "active"
+            );
+
+
+            /* REQUIRED */
+
+            studentName.required = false;
+
+            registrationNo.required = false;
+
+            studentEmail.required = false;
+
+            studentPassword.required = false;
+
+            studentConfirmPassword.required = false;
+
+
+            teacherName.required = true;
+
+            teacherId.required = true;
+
+            teacherPassword.required = true;
+
+            teacherConfirmPassword.required = true;
+
+        }
+
+
+        /* =========================================
+           REGISTRATION
+        ========================================== */
+
+        form.addEventListener(
+            "submit",
+            function(event) {
+
+                event.preventDefault();
+
+
+                /* =========================
+                   STUDENT REGISTER
+                ========================== */
+
+                if (
+                    !studentRegister.classList.contains(
+                        "hidden"
+                    )
+                ) {
+
+
+                    /* PASSWORD CHECK */
+
+                    if (
+                        studentPassword.value !==
+                        studentConfirmPassword.value
+                    ) {
+
+                        alert(
+                            "Student Password and Confirm Password do not match!"
+                        );
+
+                        return;
+
+                    }
+
+
+                    /* GET OLD STUDENTS */
+
+                    const students =
+                        JSON.parse(
+                            localStorage.getItem(
+                                "students"
+                            ) || "[]"
+                        );
+
+
+                    /* CHECK EMAIL */
+
+                    const existingStudent =
+                        students.find(
+                            user =>
+                                user.email ===
+                                studentEmail.value
+                                    .trim()
+                                    .toLowerCase()
+                        );
+
+
+                    if (existingStudent) {
+
+                        alert(
+                            "A student account with this email already exists."
+                        );
+
+                        return;
+
+                    }
+
+
+                    /* CREATE STUDENT */
+
+                    const student = {
+
+                        name:
+                            studentName.value.trim(),
+
+                        registrationNo:
+                            registrationNo.value.trim(),
+
+                        email:
+                            studentEmail.value
+                                .trim()
+                                .toLowerCase(),
+
+                        password:
+                            studentPassword.value
+
+                    };
+
+
+                    students.push(student);
+
+
+                    localStorage.setItem(
+                        "students",
+                        JSON.stringify(students)
+                    );
+
+
+                    alert(
+                        "Student Registration Successful!\n\nPlease Login."
+                    );
+
+
+                    window.location.href =
+                        "login.html";
+
+                }
+
+
+                /* =========================
+                   TEACHER REGISTER
+                ========================== */
+
+                else {
+
+
+                    /* PASSWORD CHECK */
+
+                    if (
+                        teacherPassword.value !==
+                        teacherConfirmPassword.value
+                    ) {
+
+                        alert(
+                            "Teacher Password and Confirm Password do not match!"
+                        );
+
+                        return;
+
+                    }
+
+
+                    /* GET OLD TEACHERS */
+
+                    const teachers =
+                        JSON.parse(
+                            localStorage.getItem(
+                                "teachers"
+                            ) || "[]"
+                        );
+
+
+                    /* CHECK TEACHER ID */
+
+                    const existingTeacher =
+                        teachers.find(
+                            user =>
+                                user.teacherId ===
+                                teacherId.value.trim()
+                        );
+
+
+                    if (existingTeacher) {
+
+                        alert(
+                            "This Teacher ID is already registered."
+                        );
+
+                        return;
+
+                    }
+
+
+                    /* CREATE TEACHER */
+
+                    const teacher = {
+
+                        name:
+                            teacherName.value.trim(),
+
+                        teacherId:
+                            teacherId.value.trim(),
+
+                        password:
+                            teacherPassword.value
+
+                    };
+
+
+                    teachers.push(teacher);
+
+
+                    localStorage.setItem(
+                        "teachers",
+                        JSON.stringify(teachers)
+                    );
+
+
+                    alert(
+                        "Teacher Registration Successful!\n\nPlease Login."
+                    );
+
+
+                    window.location.href =
+                        "login.html";
+
+                }
+
+            }
+        );
+
+    </script>
+
+
+</body>
+
+</html>
