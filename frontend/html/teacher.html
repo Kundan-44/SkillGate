@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Lab Tracker</title>
+    <!-- <link rel="stylesheet" href="subject.css">
+    <link rel="stylesheet" href="student.css"> -->
+    <link rel="stylesheet" href="../css/teacher.css">
+</head>
+<body>
+    <header class="topbar">
+    <div class="brand"><span class="brand-mark">&lt;/&gt;</span><span>SkillGate</span></div>
+    <div class="account"><span>Teacher ID:- <b>ABC123....</b></span>
+        <span class="avatar"><img src="\frontend\assets\user.png" alt="Profile Icon" height="20" width="20"></span>
+        <button class="logout">Logout</button></div>
+  </header>
+      
+    <main>
+        <h1><b>WELCOME  TEACHER PORTAL</b></h1>
+        <div class="card-container">
+
+    <div class="card">
+        <img src="python.webp" class="card-img-top" alt="Python">
+        <div class="card-body">
+            <h5 class="card-title"><b>Python</b></h5>
+            <p class="card-text">
+                <strong><u>Student's Details, Who are Complete a Python Lab.</u></strong>
+            </p>
+            <a href="teacherpython.html" class="btn-view">VIEW MORE 👉</a>
+        </div>
+    </div>
+
+    <div class="card">
+        <img src="python.webp" class="card-img-top" alt="C">
+        <div class="card-body">
+            <h5 class="card-title"><b>C</b></h5>
+            <p class="card-text">
+                <strong><u>Student's Details, Who are Complete a C Lab.</u></strong>
+            </p>
+            <a href="teacherc.html" class="btn-view">VIEW MORE 👉</a>
+        </div>
+    </div>
+
+    <div class="card">
+        <img src="python.webp" class="card-img-top" alt="C++">
+        <div class="card-body">
+            <h5 class="card-title"><b>C++</b></h5>
+            <p class="card-text">
+                <strong><u>Student's Details, Who are Complete a C++ Lab.</u></strong>
+            </p>
+            <a href="teacherc++.html" class="btn-view">VIEW MORE 👉</a>
+        </div>
+    </div>
+
+    <div class="card">
+        <img src="python.webp" class="card-img-top" alt="DSA">
+        <div class="card-body">
+            <h5 class="card-title"><b>DSA</b></h5>
+            <p class="card-text">
+                <strong><u>Student's Details, Who are Complete a DSA Lab.</u></strong>
+            </p>
+            <a href="teacherDSA.html" class="btn-view">VIEW MORE 👉</a>
+        </div>
+    </div>
+
+    <div class="card">
+        <img src="python.webp" class="card-img-top" alt="OOPs Java">
+        <div class="card-body">
+            <h5 class="card-title"><b>OOPs (Java)</b></h5>
+            <p class="card-text">
+                <strong><u>Student's Details, Who are Complete a OOPs(Java) Lab.</u></strong>
+            </p>
+            <a href="teacherOOPs.html" class="btn-view">VIEW MORE 👉</a>
+        </div>
+    </div>
+
+</div>
+    </main>
+    <footer>
+       
+    </footer>
+    <script src="../js/teacher.js"></script>
+    <script>
+    document.querySelector(".logout").addEventListener("click", function () {
+
+        // Remove saved student data
+        localStorage.removeItem("selectedLab");
+        localStorage.removeItem("selectedTopic");
+
+        // Go back to login page
+        window.location.href = "login.html";
+    });
+</script>
+</body>
+</html>

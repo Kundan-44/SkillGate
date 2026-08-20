@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Lab Tracker - Teacher Portal</title>
+
+    <link rel="stylesheet" href="../css/teacherc.css">
+</head>
+
+<body>
+    <header class="topbar">
+
+        <div class="brand">
+            <span class="brand-mark">&lt;/&gt;</span>
+            <span>SkillGate</span>
+        </div>
+
+        <div class="account">
+
+            <span class="teacher-id">
+                Teacher ID:- <b>ABC123....</b>
+            </span>
+
+            <span class="avatar">
+                <img src="../assets/user.png" alt="Profile Icon">
+            </span>
+
+            <button class="logout" id="logout">
+                Logout
+            </button>
+
+        </div>
+
+    </header>
+    <main>
+
+        <h1>
+            <b>WELCOME TEACHER PORTAL</b>
+        </h1>
+        <h2># PYTHON  PROGRAMMING LAB</h2>
+        <div class="search">
+
+            <input
+                id="search"
+                type="search"
+                placeholder="Search topics or questions..."
+                autocomplete="off"
+            >
+
+        </div>
+  <div class="table-container">
+
+    <table id="studentTable">
+
+        <thead>
+            <tr>
+                <th>Student Name</th>
+                <th>Reg No:-</th>
+                <th>Lab Completed</th>
+                <th>Remaining Lab</th>
+                <th>Module Wise File Received</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr>
+
+                <td class="student-name">
+                    Student 1
+                </td>
+
+                <td>
+                    REG001
+                </td>
+
+                <td>
+
+                    <div class="progress-info">
+                        <span>8 / 10 Labs</span>
+                        <span>80%</span>
+                    </div>
+
+                    <div class="progress-bar">
+                        <div class="progress completed"
+                             style="width: 80%;">
+                        </div>
+                    </div>
+
+                </td>
+
+                <td>
+
+                    <div class="progress-info">
+                        <span>2 / 10 Labs</span>
+                        <span>20%</span>
+                    </div>
+
+                    <div class="progress-bar">
+                        <div class="progress remaining"
+                             style="width: 20%;">
+                        </div>
+                    </div>
+
+                </td>
+
+                <td>
+
+                    <div class="module-files">
+
+                        <div class="module-file">
+                            <span>📄 Module 1</span>
+                            <a href="#" class="view-file">VIEW</a>
+                        </div>
+
+                        <div class="module-file">
+                            <span>📄 Module 2</span>
+                            <a href="#" class="view-file">VIEW</a>
+                        </div>
+
+                        <div class="module-file">
+                            <span>📄 Module 3</span>
+                            <a href="#" class="view-file">VIEW</a>
+                        </div>
+
+                    </div>
+
+                </td>
+
+            </tr>
+
+            <tr>
+
+                <td class="student-name">
+                    Student 2
+                </td>
+
+                <td>
+                    REG002
+                </td>
+
+                <td>
+
+                    <div class="progress-info">
+                        <span>6 / 10 Labs</span>
+                        <span>60%</span>
+                    </div>
+
+                    <div class="progress-bar">
+                        <div class="progress completed"
+                             style="width: 60%;">
+                        </div>
+                    </div>
+
+                </td>
+
+                <td>
+
+                    <div class="progress-info">
+                        <span>4 / 10 Labs</span>
+                        <span>40%</span>
+                    </div>
+
+                    <div class="progress-bar">
+                        <div class="progress remaining"
+                             style="width: 40%;">
+                        </div>
+                    </div>
+
+                </td>
+
+                <td>
+
+                    <div class="module-files">
+
+                        <div class="module-file">
+                            <span>📄 Module 1</span>
+                            <a href="#" class="view-file">VIEW</a>
+                        </div>
+
+                        <div class="module-file">
+                            <span>📄 Module 2</span>
+                            <a href="#" class="view-file">VIEW</a>
+                        </div>
+
+                        <div class="module-file not-received">
+                            <span>⏳ Module 3</span>
+                            <small>Not Received</small>
+                        </div>
+
+                    </div>
+
+                </td>
+
+           </tr>
+
+            <tr>
+
+                <td class="student-name">
+                    Student 3
+                </td>
+
+                <td>
+                    REG003
+                </td>
+
+                <td>
+
+                    <div class="progress-info">
+                        <span>9 / 10 Labs</span>
+                        <span>90%</span>
+                    </div>
+
+                    <div class="progress-bar">
+                        <div class="progress completed"
+                             style="width: 90%;">
+                        </div>
+                    </div>
+
+                </td>
+
+                <td>
+
+                    <div class="progress-info">
+                        <span>1 / 10 Labs</span>
+                        <span>10%</span>
+                    </div>
+
+                    <div class="progress-bar">
+                        <div class="progress remaining"
+                             style="width: 10%;">
+                        </div>
+                    </div>
+
+                </td>
+
+                <td>
+
+                    <div class="module-files">
+
+                        <div class="module-file">
+                            <span>📄 Module 1</span>
+                            <a href="#" class="view-file">VIEW</a>
+                        </div>
+
+                        <div class="module-file">
+                            <span>📄 Module 2</span>
+                            <a href="#" class="view-file">VIEW</a>
+                        </div>
+
+                        <div class="module-file">
+                            <span>📄 Module 3</span>
+                            <a href="#" class="view-file">VIEW</a>
+                        </div>
+
+                        <div class="module-file">
+                            <span>📄 Module 4</span>
+                            <a href="#" class="view-file">VIEW</a>
+                        </div>
+
+                    </div>
+
+                </td>
+
+            </tr>
+            <tr>
+
+                <td class="student-name">
+                    Student 4
+                </td>
+
+                <td>
+                    REG004
+                </td>
+
+                <td>
+
+                    <div class="progress-info">
+                        <span>5 / 10 Labs</span>
+                        <span>50%</span>
+                    </div>
+
+                    <div class="progress-bar">
+                        <div class="progress completed"
+                             style="width: 50%;">
+                        </div>
+                    </div>
+
+                </td>
+
+                <td>
+
+                    <div class="progress-info">
+                        <span>5 / 10 Labs</span>
+                        <span>50%</span>
+                    </div>
+
+                    <div class="progress-bar">
+                        <div class="progress remaining"
+                             style="width: 50%;">
+                        </div>
+                    </div>
+
+                </td>
+
+                <td>
+
+                    <div class="module-files">
+
+                        <div class="module-file">
+                            <span>📄 Module 1</span>
+                            <a href="#" class="view-file">VIEW</a>
+                        </div>
+
+                        <div class="module-file">
+                            <span>📄 Module 2</span>
+                            <a href="#" class="view-file">VIEW</a>
+                        </div>
+
+                        <div class="module-file not-received">
+                            <span>⏳ Module 3</span>
+                            <small>Not Received</small>
+                        </div>
+
+                    </div>
+
+                </td>
+
+            </tr>
+
+            <tr>
+
+                <td class="student-name">
+                    Student 5
+                </td>
+
+                <td>
+                    REG005
+                </td>
+
+                <td>
+
+                    <div class="progress-info">
+                        <span>7 / 10 Labs</span>
+                        <span>70%</span>
+                    </div>
+
+                    <div class="progress-bar">
+                        <div class="progress completed"
+                             style="width: 70%;">
+                        </div>
+                    </div>
+
+                </td>
+
+                <td>
+
+                    <div class="progress-info">
+                        <span>3 / 10 Labs</span>
+                        <span>30%</span>
+                    </div>
+
+                    <div class="progress-bar">
+                        <div class="progress remaining"
+                             style="width: 30%;">
+                        </div>
+                    </div>
+
+                </td>
+
+                <td>
+
+                    <div class="module-files">
+
+                        <div class="module-file">
+                            <span>📄 Module 1</span>
+                            <a href="#" class="view-file">VIEW</a>
+                        </div>
+
+                        <div class="module-file">
+                            <span>📄 Module 2</span>
+                            <a href="#" class="view-file">VIEW</a>
+                        </div>
+
+                        <div class="module-file">
+                            <span>📄 Module 3</span>
+                            <a href="#" class="view-file">VIEW</a>
+                        </div>
+
+                    </div>
+
+                </td>
+
+            </tr>
+            <tr>
+
+                <td class="student-name">
+                    Student 6
+                </td>
+
+                <td>
+                    REG006
+                </td>
+
+                <td>
+
+                    <div class="progress-info">
+                        <span>4 / 10 Labs</span>
+                        <span>40%</span>
+                    </div>
+
+                    <div class="progress-bar">
+                        <div class="progress completed"
+                             style="width: 40%;">
+                        </div>
+                    </div>
+
+                </td>
+
+                <td>
+
+                    <div class="progress-info">
+                        <span>6 / 10 Labs</span>
+                        <span>60%</span>
+                    </div>
+
+                    <div class="progress-bar">
+                        <div class="progress remaining"
+                             style="width: 60%;">
+                        </div>
+                    </div>
+
+                </td>
+
+                <td>
+
+                    <div class="module-files">
+
+                        <div class="module-file">
+                            <span>📄 Module 1</span>
+                            <a href="#" class="view-file">VIEW</a>
+                        </div>
+
+                        <div class="module-file not-received">
+                            <span>⏳ Module 2</span>
+                            <small>Not Received</small>
+                        </div>
+
+                        <div class="module-file not-received">
+                            <span>⏳ Module 3</span>
+                            <small>Not Received</small>
+                        </div>
+
+                    </div>
+
+                </td>
+
+            </tr>
+
+        </tbody>
+
+    </table>  
+    </main>
+
+    <footer>
+    </footer>
+
+    <script src="../js/teacher.js"></script>
+
+    <script>
+
+        document.querySelector(".logout").addEventListener("click", function () {
+
+            // Remove saved student/lab data
+            localStorage.removeItem("selectedLab");
+            localStorage.removeItem("selectedTopic");
+
+            // Go to login page
+            window.location.href = "login.html";
+
+        });
+        const searchInput =
+            document.getElementById("search");
+
+        searchInput.addEventListener("input", function () {
+
+            const searchValue =
+                this.value.toLowerCase().trim();
+            const rows =
+                document.querySelectorAll("#studentTable tbody tr");
+
+            rows.forEach(function (row) {
+
+                const rowText =
+                    row.textContent.toLowerCase();
+
+                if (rowText.includes(searchValue)) {
+
+                    row.style.display = "";
+
+                } else {
+
+                    row.style.display = "none";
+
+                }
+
+            });
+
+        });
+
+        const fileInputs =
+            document.querySelectorAll(".file-input");
+
+        fileInputs.forEach(function (input) {
+
+            input.addEventListener("change", function () {
+
+                const fileDrop =
+                    this.closest(".file-drop");
+
+                const span =
+                    fileDrop.querySelector("span");
+
+                if (this.files.length > 0) {
+
+                    span.textContent =
+                        "✅ " + this.files[0].name;
+
+                    fileDrop.classList.add("file-selected");
+
+                }
+
+            });
+
+        });
+
+    </script>
+
+</body>
+
+</html>
